@@ -9,7 +9,13 @@
   "author": "Jacob Paine",
   "license": "ISC",
   "dependencies": {
+    "aws-sdk": "^2.628.0",
+    "bcrypt": "^4.0.0",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "*",
+    "jsonwebtoken": "^8.5.1",
     "socket.io": "*",
-    "express": "*"
+    "uuid": "^7.0.1"
   }
 }
