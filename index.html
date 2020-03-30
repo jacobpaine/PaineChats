@@ -21,41 +21,18 @@
         <input id="userLogin" data-ref="userLogin" type="submit" value="Login" />
     </div>
     <div id="loginMessageBox"></div>
-    <!-- <div id="messageArea" class="row">
-            <div class="col-md-4">
-                <div class="well">
-                    <h3>Online Users</h3>
-                    <ul id='users' class="list-group"></ul>
-                </div>
-            </div>
-            <div class="col-md-8">
-                <div class="chat" id="chat"></div>
-                <form id="messageForm">
-                    <div class="form-group">
-                        <label>Enter message</label>
-                        <textarea id="message" cols="30" rows="10" class="form-control"></textarea>
-                        </br>
-                        <input type="submit" class="btn btn-primary" value="Send Message" />
-                    </div>
-                </form>
-            </div>
-        </div> -->
+
     <script>
         (function () {
             var socket = io.connect();
             var $messageForm = $('#messageForm');
             var $message = $('#message');
             var $chat = $('#chat');
-
-            // var $messageArea = document.getElementById('messageArea');
             var userFormArea = document.getElementById('userFormArea');
-            // var $userForm = document.getElementById('userForm');
             var userFormSubmit = document.getElementById('userFormSubmit');
-            // var $users = $('#users');
-            // var $username = $('#username');
 
             function loadGame() {
-                
+
                 // Remove the login boxes
                 document.getElementById('userFormArea').remove();
                 document.getElementById('loginMessageBox').remove();
@@ -63,7 +40,6 @@
                 // Place the new boxes on screen
 
                 // Make an action of entry to the world
-
             }
 
             // Methods
@@ -119,7 +95,6 @@
             });
 
             socket.on('new message', function (data) {
-                console.log(data)
                 $chat.append('<div class="well"><strong>' + data.user + '<strong>:' + data.msg + '</div>')
             });
 
@@ -132,8 +107,6 @@
             })
 
             socket.on('login message', function (data) {
-                console.log("data: ", data)
-
                 // Store the username and uuid for future use.
                 sessionStorage.username = data.username;
                 sessionStorage.uuid = data.uuid;

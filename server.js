@@ -78,9 +78,7 @@ io.sockets.on('connection', function (socket) {
             }
         };
         var loginAttempt = docClient.scan(params, function (err, data) {
-            console.log("data: ", data);
             var playerObj = data;
-            console.log("data in login", data)
             // Acknowledge New Player
             if (data.Count === 0) {
                 // New Player Login message
@@ -97,7 +95,6 @@ io.sockets.on('connection', function (socket) {
     // Disconnect
     socket.on('disconnect', function (data) {
         if (!socket.username) return;
-        console.log('data: ', data);
         users.splice(users.indexOf(socket.username), 1);
         updateUsernames()
         connections.splice(connections.indexOf(socket), 1);
@@ -110,8 +107,6 @@ io.sockets.on('connection', function (socket) {
     });
 
     socket.on('login', function (user, password, callback) {
-        console.log('user', user)
-        console.log('password', password)
         // If someone tries to login without a password.
         if (user === "" || password === "") {
             io.sockets.emit('login message', {
